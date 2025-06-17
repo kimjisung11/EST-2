@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>상품 목록</title>
+</head>
+<body>
+<h1>상품 목록</h1>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>상품명</th>
+    <th>가격</th>
+    <th>삭제</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="shoe : ${shoes}">
+    <td th:text="${shoe.id}">1</td>
+    <td th:text="${shoe.name}">상품명</td>
+    <td th:text="${shoe.price}">10000</td>
+    <td>
+      <form th:action="@{'/shoes/delete/' + ${shoe.id}}" method="post" onsubmit="return confirm('삭제하시겠습니까?');">
+        <button type="submit">삭제</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<a href="/">홈으로</a> | <a href="/shoes/register">상품 등록</a>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>나이키 신발 서비스</title>
+</head>
+<body>
+<h1>--NIKE--</h1>
+
+<p>
+    <!-- 로그인 된 유저 아이디 출력 -->
+    <span th:text="${userId}"> </span>
+</p>
+
+<div>
+    <!-- 로그인 상태에 따라 버튼 다르게 표시 -->
+    <div th:if="${isLogin}">
+        <a href="/shoes">상품 목록</a>
+        <a href="/shoes/register">상품 등록</a>
+        <a href="/users/logout">로그아웃</a>
+    </div>
+
+    <div th:unless="${isLogin}">
+        <a href="/users/login">로그인</a>
+        <a href="/users/register">회원가입</a>
+        <span> </span> <!-- 빈칸 -->
+    </div>
+</div>
+</body>
+</html>
